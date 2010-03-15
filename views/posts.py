@@ -16,6 +16,6 @@ class Index(Base):
     return Post.all()
 
 class Show(Base):
-  post = None
+  pass
 
 
