@@ -1,7 +1,4 @@
-To learn Python, I was interested in playing around with a similar framework
-such as Sinatra or Rails. Bottle seemed to fit the bill and has a good commit
-frequency. I missed a lot of the out-of-the-box standards and conventions
-provided by Rails, so I am attempting to do that with mongo-in-a-bottle. Also, I am not aware of many other projects actively using pystache.
+To learn Python, I was interested in playing around with a similar framework such as Sinatra or Rails. Bottle seemed to fit the bill and has a good commit frequency. I missed a lot of the out-of-the-box standards and conventions provided by Rails, so I am attempting to do that with mongo-in-a-bottle. Also, I am not aware of many other projects actively using pystache.
 
 From getting a usable blogging system up and running, I hope to extract the
 standards and conventions into a framework that can be cloned by others to get
