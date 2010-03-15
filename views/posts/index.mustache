@@ -2,7 +2,7 @@
 
 <html>
 <head>
-  <title>Blottle</title>
+  <title>mongo-in-a-bottle</title>
   <link rel="stylesheet" type="text/css" href="/static/app.css" />
 </head>
 
@@ -17,12 +17,13 @@
 
     <label for="body">Body</label>
     <textarea name="body" id="body"></textarea>
+    
     <input type="submit" />
   </form>
 
   <ul id="posts">
     {{#posts}}
-      <li>{{> post}}</li>
+      <li>{{> views/posts/post}}</li>
     {{/posts}}
   </ul>
 
