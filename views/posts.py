@@ -2,7 +2,7 @@ import pystache
 from models.post import Post
 
 class Base(pystache.View):
-  template_path = 'posts'
+  template_path = 'views/posts'
 
 class Index(Base):
   def posts(self):
