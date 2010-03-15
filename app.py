@@ -15,9 +15,7 @@ def posts_create():
 @route('/posts/:id')
 def posts_show(id):
   post = Post.find_one(id)
-  s = Show()
-  s.post = post
-  return s.render()
+  return Show(post).render()
 
 @route('/posts/:id', method='DELETE')
 def posts_delete(id):

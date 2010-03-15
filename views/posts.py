@@ -16,6 +16,6 @@ class Index(Base):
     return Post.all()
 
 class Show(Base):
-  pass
-
-
+  def __init__(self, post):
+    super(Show, self).__init__()
+    self.post = post
