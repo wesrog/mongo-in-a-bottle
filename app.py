@@ -10,7 +10,7 @@ def posts_index():
 @route('/posts', method='POST')
 def posts_create():
   Post.insert(request.POST)
-  redirect('/')
+  redirect('/', 301)
 
 @route('/posts/:id')
 def posts_show(id):
