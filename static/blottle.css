@@ -1,0 +1,8 @@
+body {
+  font-family: sans-serif;
+}
+
+label, input {
+  display: block;
+  margin: .5em 0;
+}
