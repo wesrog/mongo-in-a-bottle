@@ -10,8 +10,7 @@ def posts_index():
 
 @route('/posts', method='POST')
 def posts_create():
-  if not request.POST['author'] == '':
-    v.posts.posts.insert(request.POST) # ugly!
+  Post.insert(request.POST)
   redirect('/')
 
 @route('/posts/:id')
@@ -25,22 +24,9 @@ def posts_show(id):
 def posts_delete(id):
   post = Post.remove(id)
 
-@route('/hello/:name')
-def hello_name(name):
-    return 'Hello %s!' % name
-
-@route('/hello', method='POST')
-def hello_post():
-    name = request.POST['name']
-    return 'Hello %s!' % name
-
 @route('/static/:filename#.*#')
 def static_file(filename):
     send_file(filename, root='static')
-
-@route('/template/test')
-def template_test():
-    return template('template_name', title='Template Test', items=[1,2,3,'fly'])
 
 bottle.debug(True)
 

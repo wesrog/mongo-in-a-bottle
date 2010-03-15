@@ -17,3 +17,8 @@ class Post:
   @staticmethod
   def remove(id):
     posts.remove({'_id': collection.ObjectId(id)})
+
+  @staticmethod
+  def insert(post):
+    if not post['author'] == '':
+      posts.insert(post)
