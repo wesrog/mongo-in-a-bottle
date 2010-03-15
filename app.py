@@ -3,7 +3,7 @@ from bottle import route, run, request, response, send_file, abort, redirect
 from views.posts import Index, Show
 from models.post import Post
 
-@route('/', method='GET')
+@route('/')
 def posts_index():
     return Index().render()
 
