@@ -12,7 +12,11 @@ class Post:
 
   @staticmethod
   def find_one(id):
-    return posts.find_one({'_id': collection.ObjectId(id)})
+    try:
+      id = collection.ObjectId(id)
+      return posts.find_one({'_id': id})
+    except pymongo.errors.InvalidId:
+      return None
 
   @staticmethod
   def remove(id):

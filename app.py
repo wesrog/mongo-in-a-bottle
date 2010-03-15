@@ -15,7 +15,10 @@ def posts_create():
 @route('/posts/:id')
 def posts_show(id):
   post = Post.find_one(id)
-  return Show(post).render()
+  if post:
+    return Show(post).render()
+  else:
+    abort(404, 'Not found')
 
 @route('/posts/:id', method='DELETE')
 def posts_delete(id):
