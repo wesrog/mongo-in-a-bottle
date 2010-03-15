@@ -1,6 +1,5 @@
 import bottle
 from bottle import route, run, request, response, send_file, abort, redirect
-import views as v
 from views.posts import Index, Show
 from models.post import Post
 
