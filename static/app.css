@@ -1,9 +1,21 @@
 body {
   font-family: sans-serif;
   font-size: larger;
+  text-align: center;
 }
 
 label, input {
   display: block;
   margin: .5em 0;
+}
+
+div#page {
+  width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  border: 1px solid black;
+}
+
+div#inner {
+  padding: 1em;
 }
