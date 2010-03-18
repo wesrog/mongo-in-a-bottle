@@ -1,6 +1,13 @@
 {{> ../header }}
 
-  <form id="new_post" action="/posts" method="post">
+  <ul id="posts">
+    {{#posts}}
+      <li>{{> templates/posts/post}}</li>
+    {{/posts}}
+  </ul>
+
+  <a id="create-new-post">Create new post</a>
+  <form id="new-post" action="/posts" method="post">
     <label for="author">Author</label>
     <input type="text" name="author" id="author" />
 
@@ -11,12 +18,7 @@
     <textarea name="body" id="body"></textarea>
     
     <input type="submit" />
+    <a id="cancel-new-post">Cancel</a>
   </form>
-
-  <ul id="posts">
-    {{#posts}}
-      <li>{{> templates/posts/post}}</li>
-    {{/posts}}
-  </ul>
 
 {{> ../footer }}

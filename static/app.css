@@ -7,6 +7,14 @@ body {
 label, input {
   display: block;
   margin: .5em 0;
+  font-size: larger;
+}
+input[type=submit] {
+  display: inline;
+}
+textarea {
+  width: 100%;
+  height: 300px;
 }
 
 div#page {
@@ -18,4 +26,12 @@ div#page {
 
 div#inner {
   padding: 1em;
+}
+
+#new-post {
+  display: none;
+}
+#create-new-post, #cancel-new-post {
+  cursor: pointer;
+  color: blue;
 }

@@ -15,7 +15,8 @@ class Post:
             _id       = p['_id'],
             author    = p['author'],
             title     = p['title'],
-            untitled  = p['title'] == ''
+            untitled  = p['title'] == '',
+            anonymous = p['author'] == ''
           )
       )
     return psts
@@ -35,5 +36,4 @@ class Post:
 
   @staticmethod
   def insert(post):
-    if not post['author'] == '':
-      posts.insert(post)
+    posts.insert(post)

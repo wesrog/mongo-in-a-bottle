@@ -11,4 +11,17 @@ $(function() {
       e.preventDefault();
     }, false);
   });
+
+  $('#create-new-post').click(function() {
+      $('#create-new-post').toggle();
+      $('#new-post').slideDown('fast', function() {
+        });
+    });
+
+  $('#cancel-new-post').click(function() {
+      $('#new-post').slideUp('fast', function() {
+        $('#create-new-post').toggle();
+        });
+    });
+    
 });

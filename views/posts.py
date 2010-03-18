@@ -25,3 +25,6 @@ class Show(Base):
 
   def untitled(self):
     return self.post['title'] == ''
+
+  def anonymous(self):
+    return self.post['author'] == ''

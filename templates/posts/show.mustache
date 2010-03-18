@@ -7,7 +7,12 @@
   {{title}}
   </h1>
 
-  <p><em>by {{author}}</em</p>
+  <p><em>by 
+  {{#anonymous}}
+  anonymous
+  {{/anonymous}}
+  {{author}}
+  </em</p>
 
   {{body}}
 
