@@ -2,7 +2,7 @@ import pystache
 from models.post import Post
 
 class Base(pystache.View):
-  template_path = 'views/posts'
+  template_path = 'templates/posts'
 
   def __getattr__(self, name):
     if self.post:
