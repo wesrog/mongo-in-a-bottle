@@ -1,2 +1,9 @@
-<a href="/posts/{{_id}}">{{title}}</a>
+<a href="/posts/{{_id}}">
+{{#untitled}}
+untitled
+{{/untitled}}
+{{title}}
+by {{author}}
+</a>
+&bull;
 <a href="/posts/{{_id}}" id="post-{{_id}}" class="delete">[Delete]</a>

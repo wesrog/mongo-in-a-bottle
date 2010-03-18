@@ -8,7 +8,18 @@ posts = db.posts
 class Post:
   @staticmethod
   def all():
-    return posts.find()
+    psts = []
+    for p in posts.find():
+      psts.append(
+          dict(
+            _id       = p['_id'],
+            author    = p['author'],
+            title     = p['title'],
+            untitled  = p['title'] == ''
+          )
+      )
+    return psts
+    #return posts.find()
 
   @staticmethod
   def find_one(id):

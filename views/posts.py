@@ -19,3 +19,9 @@ class Show(Base):
   def __init__(self, post):
     super(Show, self).__init__()
     self.post = post
+
+  def title(self):
+    return self.post['title']
+
+  def untitled(self):
+    return self.post['title'] == ''
