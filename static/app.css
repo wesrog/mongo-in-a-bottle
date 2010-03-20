@@ -29,7 +29,7 @@ div#inner {
 }
 
 #new-post {
-  display: none;
+  /*display: none;*/
 }
 #create-new-post, #cancel-new-post {
   cursor: pointer;

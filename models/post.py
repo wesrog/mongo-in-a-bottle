@@ -1,5 +1,7 @@
 import pymongo
 from pymongo import Connection, collection
+import parsedatetime.parsedatetime as pdt
+import parsedatetime.parsedatetime_consts as pdc
 
 connection = Connection()
 db = connection['blog']
@@ -35,5 +37,5 @@ class Post:
     posts.remove({'_id': collection.ObjectId(id)})
 
   @staticmethod
-  def insert(post):
-    posts.insert(post)
+  def save(post):
+    posts.save(post)

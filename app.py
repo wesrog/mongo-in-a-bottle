@@ -1,15 +1,15 @@
-import bottle
+import bottle, config.settings as s
 from bottle import route, run, request, response, send_file, abort, redirect
-from views.posts import Index, Show
+from views.posts import Index, New, Show
 from models.post import Post
 
 @route('/')
 def posts_index():
-    return Index().render()
+  return Index().render()
 
 @route('/posts', method='POST')
 def posts_create():
-  Post.insert(request.POST)
+  Post.save(request.POST)
   redirect('/', 301)
 
 @route('/posts/:id')
@@ -19,6 +19,10 @@ def posts_show(id):
     return Show(post).render()
   else:
     abort(404, 'Not found')
+
+@route('/posts/new')
+def posts_new():
+  return New().render()
 
 @route('/posts/:id', method='DELETE')
 def posts_delete(id):
@@ -30,4 +34,4 @@ def static_file(filename):
 
 bottle.debug(True)
 
-run(host='localhost', port=3000, reloader=True)
+run(host=s.host, port=s.port, reloader=s.reloader)
