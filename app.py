@@ -16,7 +16,7 @@ def posts_create():
 @route('/posts/:id')
 def posts_show(id):
   post = Post.find_one(id)
-  if post:
+  if post.data:
     return Show(post.data).render()
   else:
     abort(404, 'Not found')
@@ -34,6 +34,6 @@ def posts_delete(id):
 def static_file(filename):
     send_file(filename, root='static')
 
-bottle.debug(True)
+bottle.debug(s.debug)
 
 run(host=s.host, port=s.port, reloader=s.reloader)
