@@ -3,7 +3,12 @@ body {
   font-size: larger;
   text-align: center;
 }
-
+a {
+  color: blue;
+}
+a:visited {
+  color:blue;
+}
 label, input {
   display: block;
   margin: .5em 0;
