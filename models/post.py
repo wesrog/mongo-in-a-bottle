@@ -1,41 +1,32 @@
 import pymongo
 from pymongo import Connection, collection
-import parsedatetime.parsedatetime as pdt
-import parsedatetime.parsedatetime_consts as pdc
+import lib.mongo
+from lib.mongo import Model
+#import parsedatetime.parsedatetime as pdt
+#import parsedatetime.parsedatetime_consts as pdc
 
-connection = Connection()
-db = connection['blog']
-posts = db.posts
+#connection = Connection()
+#db = connection['blog']
+#posts = db.posts
 
-class Post:
+class Post(Model):
+  def __init__(self, data):
+    self.data = data
+
   @staticmethod
   def all():
     psts = []
-    for p in posts.find():
+    for p in Model().collection.find():
       psts.append(
           dict(
             _id       = p['_id'],
             author    = p['author'],
             title     = p['title'],
             untitled  = p['title'] == '',
-            anonymous = p['author'] == ''
+            anonymous = p['author'] == '',
+            url       = '/posts/%s' % p['_id']
           )
       )
     return psts
     #return posts.find()
 
-  @staticmethod
-  def find_one(id):
-    try:
-      id = collection.ObjectId(id)
-      return posts.find_one({'_id': id})
-    except pymongo.errors.InvalidId:
-      return None
-
-  @staticmethod
-  def remove(id):
-    posts.remove({'_id': collection.ObjectId(id)})
-
-  @staticmethod
-  def save(post):
-    posts.save(post)

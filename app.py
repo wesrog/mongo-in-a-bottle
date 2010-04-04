@@ -9,14 +9,15 @@ def posts_index():
 
 @route('/posts', method='POST')
 def posts_create():
-  Post.save(request.POST)
+  post = Post(request.POST)
+  post.save()
   redirect('/', 301)
 
 @route('/posts/:id')
 def posts_show(id):
   post = Post.find_one(id)
   if post:
-    return Show(post).render()
+    return Show(post.data).render()
   else:
     abort(404, 'Not found')
 
@@ -26,7 +27,8 @@ def posts_new():
 
 @route('/posts/:id', method='DELETE')
 def posts_delete(id):
-  post = Post.remove(id)
+  p = Post.find_one(id)
+  p.remove()
 
 @route('/static/:filename#.*#')
 def static_file(filename):
