@@ -1,6 +1,6 @@
 import bottle, config.settings as s
 from bottle import route, run, request, response, send_file, abort, redirect
-from views.posts import Index, New, Show
+from views.posts import Index, New, Show, Edit
 from models.post import Post
 
 @route('/')
@@ -16,8 +16,24 @@ def posts_create():
 @route('/posts/:id')
 def posts_show(id):
   post = Post.find_one(id)
-  if post.data:
-    return Show(post.data).render()
+  if post:
+    return Show(post).render()
+  else:
+    abort(404, 'Not found')
+
+@route('/posts/:id/edit')
+def posts_edit(id):
+  post = Post.find_one(id)
+  if post:
+    return Edit(post).render()
+  else:
+    abort(404, 'Not found')
+
+@route('/posts/:id', method='PUT')
+def posts_update(id):
+  post = Post.find_one(id)
+  if post:
+    post.save(request.POST)
   else:
     abort(404, 'Not found')
 

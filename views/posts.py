@@ -16,8 +16,10 @@ class Base(pystache.View):
 
 class Index(Base):
   def posts(self):
-    # return True if not empty
-    return True
+    return not self.empty()
+
+  def empty(self):
+    return len(self.post()) == 0
 
   def post(self):
     posts = Post.all()
@@ -28,9 +30,15 @@ class Index(Base):
     return [p.data for p in posts]
 
 class New(Base):
-  pass
+  def post(self):
+    return Post()
+
+class Edit(Base):
+  def __init__(self, post):
+    super(Edit, self).__init__()
+    self.post = Post(post.data)
 
 class Show(Base):
-  def __init__(self, data):
+  def __init__(self, post):
     super(Show, self).__init__()
-    self.post = Post(data)
+    self.post = Post(post.data)

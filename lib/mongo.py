@@ -2,13 +2,25 @@ import pymongo
 from pymongo import Connection, collection
 
 class Model(object):
-  def __init__(self):
+  def __init__(self, data=None):
     self.connection = Connection()
     self.db = self.connection.blog
-    self.collection = self.db.posts
+    self.collection = self.db[self.__class__.__name__]
+    self.data = data
 
-  def save(self):
-    self.__class__.__base__().collection.insert(self.data)
+  def __getattr__(self, name):
+    if name in self.data:
+      try:
+        return self.data[name]
+      except:
+        AttributeError
+
+  def save(self, data=None):
+    if not data:
+      data = self.data
+    else:
+      data['_id'] = self.data['_id']
+    self.__class__.__base__().collection.save(data)
 
   def remove(self):
     id = collection.ObjectId(self.data['_id']) 
@@ -17,9 +29,8 @@ class Model(object):
   @classmethod
   def last(cls):
     try:
-      model = cls.__base__().collection
-      count = model.find().count()
-      record = model.find()[count-1]
+      count = Model().collection.find().count()
+      record = Model().collection.find()[count-1]
       return cls(record)
     except pymongo.errors.InvalidId:
       return None

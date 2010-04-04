@@ -21,6 +21,9 @@ textarea {
   width: 100%;
   height: 300px;
 }
+table {
+  width: 100%;
+}
 
 div#page {
   width: 500px;
