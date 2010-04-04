@@ -15,6 +15,16 @@ class Model(object):
     self.__class__.__base__().collection.remove({'_id': id})
 
   @classmethod
+  def last(cls):
+    try:
+      model = cls.__base__().collection
+      count = model.find().count()
+      record = model.find()[count-1]
+      return cls(record)
+    except pymongo.errors.InvalidId:
+      return None
+
+  @classmethod
   def find_one(cls, id):
     try:
       id = collection.ObjectId(id)
@@ -22,3 +32,7 @@ class Model(object):
       return cls(model)
     except pymongo.errors.InvalidId:
       return None
+
+  @classmethod
+  def all(cls):
+    return [cls(item) for item in cls.__base__().collection.find()]

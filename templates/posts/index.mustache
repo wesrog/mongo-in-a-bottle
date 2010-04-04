@@ -2,10 +2,12 @@
 
   <a href="/posts/new">Create new post</a>
 
-  <ul id="posts">
-    {{#posts}}
-      <li>{{> templates/posts/post}}</li>
-    {{/posts}}
-  </ul>
+  {{#posts}}
+    <ul id="posts">
+      {{#post}}
+        <li>{{> templates/posts/post}}</li>
+      {{/post}}
+    </ul>
+  {{/posts}}
 
 {{> ../footer }}
