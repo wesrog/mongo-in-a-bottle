@@ -29,11 +29,12 @@ def posts_edit(id):
   else:
     abort(404, 'Not found')
 
-@route('/posts/:id', method='PUT')
+@route('/posts/:id', method='POST')
 def posts_update(id):
   post = Post.find_one(id)
   if post:
     post.save(request.POST)
+    redirect('/', 301)
   else:
     abort(404, 'Not found')
 
