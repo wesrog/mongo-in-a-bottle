@@ -12,16 +12,16 @@ $(function() {
     }, false);
   });
 
-  $('#edit-post').submit(function() {
-    $.ajax({
-      url: this.action,
-      type: 'PUT',
-      data: $('#edit-post').serialize(),
-      success: function(d) { $(location).attr('href', '/') },
-      failure: function(d) { alert('fail.'); }
-    });
-    return false;
-  });
+  //$('#edit-post').submit(function() {
+    //$.ajax({
+      //url: this.action,
+      //type: 'PUT',
+      //data: $('#edit-post').serialize(),
+      //success: function(d) { $(location).attr('href', '/') },
+      //failure: function(d) { alert('fail.'); }
+    //});
+    //return false;
+  //});
 
   $('#create-new-post').click(function() {
       $('#create-new-post').toggle();
