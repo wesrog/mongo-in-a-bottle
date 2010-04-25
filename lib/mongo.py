@@ -19,12 +19,16 @@ class Model(object):
         AttributeError
 
   def save(self, data=None):
-    if not data:
-      data = self.data
-    else:
+    # update
+    if data:
       data['_id'] = self.data['_id']
-    #self.__class__.__base__().collection.save(data)
-    self.db[self.collection()].save(data)
+    # new
+    else:
+      data = self.data
+    params = {}
+    for k in data.keys():
+      params[k] = data[k]
+    self.db[self.collection()].save(params)
 
   def remove(self):
     id = collection.ObjectId(self.data['_id']) 
