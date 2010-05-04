@@ -11,7 +11,7 @@ def posts_index():
 def posts_create():
   post = Post(request.POST)
   post.save()
-  redirect('/', 301)
+  redirect('/')
 
 @route('/posts/:id')
 def posts_show(id):
@@ -34,7 +34,7 @@ def posts_update(id):
   post = Post.find_one(id)
   if post:
     post.save(request.POST)
-    redirect('/', 301)
+    redirect('/')
   else:
     abort(404, 'Not found')
 
