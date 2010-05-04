@@ -1,7 +1,9 @@
 body {
-  font-family: sans-serif;
+  font-family: Georgia, serif;
   font-size: larger;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 a {
   color: blue;
@@ -26,14 +28,12 @@ table {
 }
 
 div#page {
-  width: 500px;
-  margin: 0 auto;
   text-align: left;
-  border: 1px solid black;
 }
 
 div#inner {
-  padding: 1em;
+  margin: 0 1em;
+  background: #fff;
 }
 
 #new-post {

@@ -1,5 +1,4 @@
-import lib.mongo
-from lib.mongo import Model
+from lib.model import Model
 
 class Post(Model):
   def untitled(self):
