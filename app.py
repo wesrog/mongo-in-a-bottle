@@ -6,28 +6,25 @@ from models.post import Post
 
 @route('/')
 def posts_index():
-  return Index().render()
+    return Index().render()
 
 @route('/posts/new')
 def posts_new():
-  post = Post()
-  return New(post).render()
+    post = Post()
+    return New(post).render()
 
 @route('/posts', method='POST')
 def posts_create():
-  post = Post()
-  for k in request.POST:
-    if request.POST[k] == '':
-      post.__setitem__(k, None)
-    else:
-      post.__setitem__(k, request.POST[k])
+    print dir(request.POST)
+    post = Post()
+    post.build(request.POST)
 
-  try:
-    post.validate()
-    post.save()
-    redirect('/')
-  except mongoengine.ValidationError, e:
-    return New(post, e).render()
+    try:
+        post.validate()
+        post.save()
+        redirect('/')
+    except mongoengine.ValidationError, e:
+        return New(post, e).render()
 
 @route('/posts/:id')
 def posts_show(id):
@@ -51,12 +48,7 @@ def posts_update(id):
   if not post:
     abort(404, 'Not found')
 
-  #post.save(request.POST)
-  for k in request.POST:
-    if request.POST[k] == '':
-      post.__setitem__(k, None)
-    else:
-      post.__setitem__(k, request.POST[k])
+  post.build(request.POST)
 
   try:
     post.validate()
