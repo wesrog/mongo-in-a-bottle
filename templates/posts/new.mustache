@@ -1,17 +1,16 @@
 {{> ../header }}
 
+  {{errors}}
+
   <form id="new-post" action="/posts" method="post">
     <label for="author">Author</label>
-    <input type="text" name="author" id="author" />
+    <input type="text" name="author" id="author" value="{{author}}" />
 
     <label for="title">Title</label>
-    <input type="text" name="title" id="title" />
-
-    <label for="date">Date</label>
-    <input type="text" name="date" id="date" value="now" />
+    <input type="text" name="title" id="title" value="{{title}}" />
 
     <label for="body">Body</label>
-    <textarea name="body" id="body"></textarea>
+    <textarea name="body" id="body">{{body}}</textarea>
     
     <input type="submit" />
     <a href="/">Cancel</a>

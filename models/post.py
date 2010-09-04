@@ -1,11 +1,9 @@
-from lib.model import Model
+#from lib.model import Model
+from mongoengine import *
+import config.settings as s
+connect(s.database)
 
-class Post(Model):
-  def untitled(self):
-    return self.title == ''
-
-  def anonymous(self):
-    return self.author == ''
-
-  def url(self):
-    return '/posts/%s' % self._id
+class Post(Document):
+  title = StringField(required=True)
+  author = StringField()
+  body = StringField()
