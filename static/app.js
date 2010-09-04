@@ -1,15 +1,15 @@
 $(function() {
   // delete post
-  $('#posts li a.delete').each(function() {
-    this.addEventListener('click', function(e) {
-      link = this;
+  $('#posts li a.delete').click(function() {
+      var that = $(this);
+      console.log(link = that);
       $.ajax({
-        url: link.href,
-        type: 'DELETE',
-        success: function(d) { $(link.parentElement).fadeOut(); }
-        });
-      e.preventDefault();
-    }, false);
+          url: this.href,
+          type: 'delete',
+          success: function(d) { that.parent().fadeOut(); }
+      });
+
+      return false;
   });
 
   //$('#edit-post').submit(function() {
